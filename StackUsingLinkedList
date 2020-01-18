@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+void push();
+void pop();
+void show();
+int choice=0,n,i=0;
+class Node{
+	public:
+	int data;
+	Node* next;
+};
+Node* head;
+int main(){
+cout<<"**************Stack using LinkedList*****************\n";
+	cout<<"Enter the size of the Array\n";
+	cin>>n;
+	while(choice!=4)
+	{
+	cout<<"**************Operations On Stack****************\n";
+	cout<<"1.Push\n2.Pop\n3.Print\n4.Exit\n";
+	cout<<"Enter ur choice\n";
+	cin>>choice;
+	switch(choice)
+	{
+		case 1: push();
+		break;
+		case 2: pop();
+		break;
+		case 3: show();
+		break;
+		case 4: exit(0);
+		break;
+		default:
+			cout<<"Enter the the above choices\n";
+	}
+};
+}
+void push()
+{ 
+    int value;
+	Node* ptr=new Node();
+	if(ptr==NULL)
+	{
+		cout<<"Stsck is full\n";
+	}
+	else
+	{   cout<<"Enter the Value in the Stack\n";
+	    cin>>value;
+		if(head==NULL)
+		{
+			ptr->data=value;
+			ptr->next=NULL;
+			head=ptr;
+		}else{
+			ptr->data=value;
+			ptr->next=head;
+			head=ptr;
+			
+		}
+	}
+}
+void pop(){
+	int value;
+	Node* ptr;
+	if(head==NULL)
+	{
+		cout<<"Stack is Empty\n";
+	}
+	else{
+		value=head->data;
+		ptr=head;
+		head=head->next;
+		delete ptr;
+		cout<<value<<"is popped from Stack\n";
+	}
+}
+void show(){
+	Node* ptr;
+	ptr=head;
+	if(ptr==NULL)
+	{
+		cout<<"Stack is empty\n";
+	}
+	else{
+	while(ptr!=NULL)
+	{
+		cout<<ptr->data<<endl;
+		ptr=ptr->next;
+	}
+}
+}
